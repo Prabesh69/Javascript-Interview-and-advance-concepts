@@ -233,3 +233,67 @@ let h1 = document.querySelector("h1")
 h1.addEventListener("click",function(){
     console.log(this) // click the h1 tag and see the console result : <h1>{what's inside}</h1>
 })
+
+// call (If you have a function and object and want to make "this" keyword in function as it's local scope then we use call)
+// Example 
+function abcd(){
+    console.log(this.name)
+}
+let obj6 = {
+    name : "Prabesh"
+}
+abcd.call(obj6) //obj6
+// What if we have to pass other parameter to that function
+function abcde(value1,value2){
+    console.log(this.name,value1,value2)
+}
+
+abcde.call(obj6,1,2) // pass object as first parameter than other parmeters
+
+// Apply (It is same as call but we pass the other parameters in an arry)
+// Example
+function abcdef(value1,value2){
+    console.log(this.name,value1,value2)
+}
+abcdef.apply(obj6,[3,4]) //use array to pass parameters 
+
+
+// Bind (It is also like call and apply but it is not decalred instantly rather creates a seperate function binding both function and object mostly used in frameworks such as react js)
+// Example (it's like map where as call and apply are like foreach)
+function Bind(vl,vl1){
+    console.log(this.name,vl,vl1)
+}
+var bindfun = Bind.bind(obj6,1,2)
+bindfun()
+
+
+// Pure and impure functions 
+
+
+// Pure function (Pure functions produce the same output for the same input consistently. They do not rely on any external factors that could introduce non-determinism, such as the current time, random number generators, or network requests.)
+// Example
+function multiply(a, b) {
+    return a * b;
+  }
+  console.log(multiply(4, 3)); // 12
+  console.log(multiply(2, 3)); // 6
+//   Pure functions do not modify variables outside their scope, modify data structures, or perform I/O operations. They operate solely on the inputs provided and return a new value without altering anything in the program's state.
+ 
+
+// Impure functions (An impure function may produce different outputs for the same set of input parameters. It can rely on external factors such as the current time, random number generators, or the state of external resources.)
+function getRandomNumber() {
+    return Math.random();
+  }
+  
+  console.log(getRandomNumber()); 
+  console.log(getRandomNumber()); 
+//   Impure functions can modify variables outside their scope, alter data structures, perform I/O operations, or have observable effects on the program's state.
+// Example 
+let counter = 0;
+
+function increment() {
+  counter++;
+}
+
+increment();
+console.log(counter); //  1
