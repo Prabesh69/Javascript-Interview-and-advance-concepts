@@ -183,3 +183,53 @@ var Counter = (function() {
   Counter.increment(); // Output: 1
   Counter.increment(); // Output: 2
   Counter.decrement(); // Output: 1
+
+// Prototype (Every object contain their own pre build features they are called prototype they are not only limited to object but also to arrays)
+// Example :
+console.log(obj1) // check [[prototype]]
+console.log(arr1.length) // .length is a prototype 
+
+// Prototypal Inheritance (The method of passing features to a component from another component with the help of prototype feature is called prototypal inheritance)
+// Example : 
+ let Human = {
+    Havelegs : true,
+    Haveemotions : true,
+    immortal : false
+ }
+
+ let Doctor = {
+    DoSurgery: true,
+    MbbsDegree : true
+ } // In this example a doctor is also a human so it should also include it's properties so we are going to pass it with the help of prototypal inheritance
+
+ Doctor.__proto__ = Human;
+ console.log(Doctor) // click on [[prototype]] the features are stored there
+ console.log(Doctor.Havelegs); // true
+
+ // this (this is a reserved keyword of Js whose value changes depending on the contex/scope)
+ //Example 
+
+// this in the global and function scope will act as window 
+ console.log(this) // window
+ function checkthis(){
+    console.log(this)
+ }
+checkthis(); // window
+
+// this is method(function inside an object) acts as the parent object
+// Example 
+
+let obj5 = {
+    Checkthis : function(){
+      console.log(this)
+    }
+}
+obj5.Checkthis()
+
+// this keyword in event listner refers to the value whose event is being listned
+// Example 
+
+let h1 = document.querySelector("h1")
+h1.addEventListener("click",function(){
+    console.log(this) // click the h1 tag and see the console result : <h1>{what's inside}</h1>
+})
