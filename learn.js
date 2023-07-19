@@ -282,7 +282,7 @@ function multiply(a, b) {
 
 // Impure functions (An impure function may produce different outputs for the same set of input parameters. It can rely on external factors such as the current time, random number generators, or the state of external resources.)
 function getRandomNumber() {
-    return Math.random();
+    return Math.random()*6; // Generate random number(float value) from 0-6
   }
   
   console.log(getRandomNumber()); 
@@ -297,3 +297,24 @@ function increment() {
 
 increment();
 console.log(counter); //  1
+
+// reduce function (It is used to apply a callback function to each element of the array in order to reduce it to a single value. The callback function takes four arguments: an accumulator, the current value, the current index, and the entire array)
+// Example 
+const number = [1, 2, 3, 4, 5];
+
+const sum = number.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue; // return the value to the accumulator 
+}, 1);// initial value of the accumulator
+
+console.log(sum);  16 // only returns single value
+// irl use
+// one example of it's irl use is to find the maximum number in an array
+const number1 = [10, 5, 8, 20, 3, 15];
+
+const max = number1.reduce((accumulator, currentValue) => {
+  return Math.max(accumulator, currentValue);
+});// no accumulator is given so it is declared as the first value of the array i.e 10 until some number greater than it comes;
+
+console.log(max);  20
+
+
