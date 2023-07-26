@@ -175,13 +175,12 @@ var Counter = (function() {
     }
   
     return {
-      increment: increment,
+      addon: increment,
       decrement: decrement
     };
   })();
   
-  Counter.increment(); // Output: 1
-  Counter.increment(); // Output: 2
+  Counter.addon(); // Output: 1
   Counter.decrement(); // Output: 1
 
 // Prototype (Every object contain their own pre build features they are called prototype they are not only limited to object but also to arrays)
@@ -315,6 +314,40 @@ const max = number1.reduce((accumulator, currentValue) => {
   return Math.max(accumulator, currentValue);
 });// no accumulator is given so it is declared as the first value of the array i.e 10 until some number greater than it comes;
 
-console.log(max);  20
+console.log(max); //20
+
+// Exporting/Importing data 
+import problemSolving from "./Problemsolving.js";
+problemSolving()
+
+// Regexes :  In JavaScript, a regex (short for regular expression) is a powerful tool used for pattern matching within strings. It allows you to perform complex search and manipulation operations on text data. Regular expressions consist of a pattern defined by a sequence of characters that represent the search criteria.
+// Regexes methods in js 
+
+// 1. Pattern matching : Check if a string matches a specific pattern 
+const pattern = "Hello, World";
+const Regx = /Hello/;
+console.log(Regx.test(pattern)); // true
+
+// 2. matching different posibilities: search for Difference in a pattern use or (|);
+const pattern2 = "This is a cat or dog may be a fish"
+const Regx2 = /cat | dog | fish/ // match any of these
+console.log(Regx2.test(pattern2)) //true;
+
+// 3. Ignore the case while matching strings : use /pattern/i to ignore the case while matching use /.../i
+const pattern3 = "PRABESH";
+const Regx3 = /prabesh/i; // case do not matter now 
+console.log(Regx3.test(pattern3)) //true 
+
+// 4.Extract Matches : So far, you have only been checking if a pattern exists or not within a string. You can also extract the actual matches you found with the .match() method.
+const pattern4 = "Hello world this is pattern4";
+const Regx4 = /pattern4/ ;
+console.log(pattern4.match(Regx4))
+// or 
+console.log("Hello, World ".match(/Hello/)) //if do not match it returns null
+
+//5.Match different instances of repeted word/string use /..../g
+const pattern5 = "world,World,worlD"
+const Regx5 = /world/ig // use /..../g to search all global matches and i to ignore cases 
+console.log(pattern5.match(Regx5))
 
 
