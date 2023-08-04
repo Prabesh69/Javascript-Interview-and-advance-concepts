@@ -342,7 +342,7 @@ console.log(Regx3.test(pattern3)) //true
 const pattern4 = "Hello world this is pattern4";
 const Regx4 = /pattern4/ ;
 console.log(pattern4.match(Regx4))
-// or 
+// or Honey
 console.log("Hello, World ".match(/Hello/)) //if do not match it returns null
 
 //5.Match different instances of repeted word/string use /..../g
@@ -350,4 +350,172 @@ const pattern5 = "world,World,worlD"
 const Regx5 = /world/ig // use /..../g to search all global matches and i to ignore cases 
 console.log(pattern5.match(Regx5))
 
+//6.Match Anything with Wildcard Period(dot) : Sometimes you won't (or don't need to) know the exact characters in your patterns. Thinking of all words that match, say, a misspelling would take a long time. Luckily, you can save time using the wildcard character.
+const pattern6 = "How are you, Honey"
+const Regx6 = /ho./gi; // use /pattern./ (dot/period) (How and hon will be print . symbolize only one letter)
+console.log(pattern6.match(Regx6))
 
+//7.Match Single Character with Multi*ple Possibilities : You learned how to match literal patterns (/literal/) and wildcard character (/./). Those are the extremes of regular expressions, where one finds exact matches and the other matches everything. There are options that are a balance between the two extremes.
+const pattern7 = "Hey,hoy,huy"
+const Rgex7 = /h[eou]y/ig
+console.log(pattern7.match(Rgex7))
+
+//8.Match Letters of the Alphabet
+const pattern8 = "cat bat rat sat"
+const Regx8 = /[a-z]at/ig
+console.log(pattern8.match(Regx8))
+
+//9.Match Numbers and Letters of the Alphabet
+const pattern9 = "hello 987.6650"
+const Regx9 = /[0-9]/g
+console.log(pattern9.match(Regx9))
+// both string and numbers can be matched together
+const Regx9_1 = /[a-z0-9]/ig
+console.log(pattern9.match(Regx9_1)) 
+
+//10.Match Single Characters Not Specified : So far, you have created a set of characters that you want to match, but you could also create a set of characters that you do not want to match. These types of character sets are called negated character sets.
+const pattern10 = "3 blue man is very rich he can get what he wants 009"
+const Regx10 = /[^0-9aeiou]/gi // it ignores 0-9 and vowels but special characters are also matched suc as :,{}, ,"",! etc
+console.log(pattern10.match(Regx10))
+
+//11.Match Characters that Occur One or More Times : Sometimes, you need to match a character (or group of characters) that appears one or more times in a row. This means it occurs at least once, and may be repeated.
+// You can use the + character to check if that is the case. Remember, the character or pattern has to be present consecutively. That is, the character has to repeat one after the other.
+const pattern11 = "Hello world"
+const Regx11 = /l+/g
+console.log(pattern11.match(Regx11)) //lolipop will return ["l","l"];
+
+//12. Match Characters that Occur Zero or More Times : use * same as 11 but returns null when no character matches 
+const pattern12 = "goooooooal"
+const pattern12_1 = "hello there"
+const pattern12_2 = "Interstellar is my favourite movie"
+const Regx12 = /go*/g
+const Regx12_1 = /i[a-z]*r/gi
+console.log(pattern12.match(Regx12),pattern12_1.match(Regx12),pattern12_2.match(Regx12_1))
+
+//13. Find Characters with Lazy Matching : In regular expressions, a greedy match finds the longest possible part of a string that fits the regex pattern and returns it as a match. The alternative is called a lazy match, which finds the smallest possible part of the string that satisfies the regex pattern. You can apply the regex /t[a-z]*i/ to the string "titanic". This regex is basically a pattern that starts with t, ends with i, and has some letters in between.
+const pattern13 = "gooooooal, Ronaldo scored in the very last minute"
+const Regx13 = /go?/g
+const  Regx13_1 = /r[a-z]*?n/gi
+console.log(pattern13.match(Regx13),pattern13.match(Regx13_1)); // go is shortest instance
+
+//14.Match Beginning String Pattern : you used the caret character (^) inside a character set to create a negated character set in the form [^thingsThatWillNotBeMatched]. Outside of a character set, the caret is used to search for patterns at the beginning of strings.
+const pattern14 = "Prabesh is a front end react developer with DSA knowledge"
+const Regx14 = /^prabesh/i
+console.log(Regx14.test(pattern14)) // string in the middle/last wont return true only first string 
+
+//15.Match Ending String Patterns use /....$/
+const pattern15 = "He is the one"
+const Regx15 = /one$/
+console.log(Regx15.test(pattern15))
+
+//16.Match All Letters and Numbers :The closest character class in JavaScript to match the alphabet is \w. This shortcut is equal to [A-Za-z0-9_]. This character class matches upper and lowercase letters plus numbers. Note, this character class also includes the underscore character (_).
+const pattern16 = "The Mt.Everest is the tallest mountain in the world"
+const Regx16 = /\w/ig
+console.log(pattern16.match(Regx16).length)
+
+//17.Match Everything But Letters and Numbers: You can search for the opposite of the \w with \W. Note, the opposite pattern uses a capital letter. This shortcut is the same as [^A-Za-z0-9_]
+const pattern17 = "I got 84% in my exam, Now iam planning to go to USA!"
+const Regx17 = /\W/g
+console.log(pattern17.match(Regx17))
+
+//18.Match All Numbers : The shortcut to look for digit characters is \d, with a lowercase d. This is equal to the character class [0-9], which looks for a single character of any number between zero and nine.
+const pattern18 = "I got over 3.25 GPA in my 12th exam,And got 1520 in my SAT "
+const Regx18 = /\d/g
+console.log(pattern18.match(Regx18))
+
+//19.Match all non numbers : The shortcut to look for non-digit characters is \D. This is equal to the character class [^0-9], which looks for a single character that is not a number between zero and nine.
+const pattern19 = "2004 05 01 what a day man "
+const Regx19 = /\D/g
+console.log(pattern19.match(Regx19))
+
+//Practise :Restrict Possible Usernames : You need to check all the usernames in a database. Here are some simple rules that users have to follow when creating their username:
+// 1)Usernames can only use alpha-numeric characters.
+// 2)The only numbers in the username have to be at the end. There can be zero or more of them at the end. Username cannot start with the number.
+// 3)Username letters can be lowercase and uppercase.
+// 4)Usernames have to be at least two characters long. A two-character username can only use alphabet letters as characters.
+let username = "JackOfAllTrades";
+let userCheck = /^[a-z][a-z]+\d*$|^[a-z]\d\d+$/i; 
+console.log(userCheck.test(username));
+
+//20.Find spaces : use \s to find spaces 
+let pattern20 = "Hello there, How it is going ?" // 6 spaces 
+let Regx20 = /\s/g
+console.log(pattern20.match(Regx20))
+
+// 21. Ignore spaces : use \S to ignore spaces in your data 
+let pattern21 = "Hello world is the quote for programmers"
+let Regx21 = /\S/gi
+console.log(pattern21.match(Regx21)) // spaces are now ignored.`
+
+// 22.Specify Upper and Lower Number of Matches : You can specify the lower and upper number of patterns with quantity specifiers. Quantity specifiers are used with curly brackets ({ and }). You put two numbers between the curly brackets - for the lower and upper number of patterns.
+let pattern22 = "aaaaaah"
+let Regx22 = /a{3,5}h/
+console.log(Regx22.test(pattern22))  // true it includes 3-5 letters of "a"
+
+// 23. Specify Only the Lower Number of Matches: You can specify the lower and upper number of patterns with quantity specifiers using curly brackets. Sometimes you only want to specify the lower number of patterns with no upper limit.
+const pattern23 = "ahhhhhhhhhhh"
+const Regx23 = /ah{3,}/ // above 3 "a"
+console.log(Regx23.test(pattern23))
+
+//24.Specify Exact Number of Matches : You can specify the lower and upper number of patterns with quantity specifiers using curly brackets. Sometimes you only want a specific number of matches.
+const pattern24 = "ahhh"
+const Regx24 = /ah{3}/
+console.log(Regx24.test(pattern24))
+
+//25.Check for All or None : You can specify the possible existence of an element with a question mark, ?. This checks for zero or one of the preceding element. You can think of this symbol as saying the previous element is optional.
+const pattern25 = "favorite" //american english
+const pattern25_1 = "favourite" //british english
+const Regx25 = /favou?rite/ // u might or might not exist (optional)
+console.log(Regx25.test(pattern25),Regx25.test(pattern25_1)) // true true
+
+//26.Positive and Negative Lookahead : Lookaheads are patterns that tell JavaScript to look-ahead in your string to check for patterns further along. This can be useful when you want to search for multiple patterns over the same string
+//There are two kinds of lookaheads: positive lookahead and negative lookahead.
+//A positive lookahead will look to make sure the element in the search pattern is there, but won't actually match it. A positive lookahead is used as (?=...) where the ... is the required part that is not matched.
+// A positive lookahead will look to make sure the element in the search pattern is there, but won't actually match it. A positive lookahead is used as (?=...) where the ... is the required part that is not matched.
+//On the other hand, a negative lookahead will look to make sure the element in the search pattern is not there. A negative lookahead is used as (?!...) where the ... is the pattern that you do not want to be there. The rest of the pattern is returned if the negative lookahead part is not present.
+
+// A more practical use of lookaheads is to check two or more patterns in one string. Here is a (naively) simple password checker that looks for between 3 and 6 characters and at least one number:
+let password = "abc123";
+let checkPass = /(?=\w{3,6})(?=\D*\d)/;
+checkPass.test(password);
+
+//  Other example 
+const pattern26 = " Qui"
+const Regx26 = /Qu(?=i)/  //will return true cuz there is "i"
+const Regx26_1 = /Qu(?!i)/ // will return false cuz there is "i"
+console.log(Regx26.test(pattern26),Regx26_1.test(pattern26))
+
+
+//27.Check For Mixed Grouping of Characters use ()
+const pattern27 = "Penguin"
+const Regx27 = /P(engu|umpk)in/
+console.log(Regx27.test(pattern27))
+
+//28.Use Capture Groups to Search and Replace : use .replace to replace and $ to replace/change the index
+let pattern28 = "one two three";
+let Regx28 = /(\w+) (\w+) (\w+)/i; // Change this line
+let replaceText = "$3 $2 $1"; // Change this line
+let result = pattern28.replace(Regx28, replaceText);
+console.log(result)
+
+//29.Reuse Patterns Using Capture Groups : Capture groups are constructed by enclosing the regex pattern to be captured in parentheses. In this case, the goal is to capture a word consisting of alphanumeric characters so the capture group will be \w+ enclosed by parentheses: /(\w+)/.
+//Use capture groups in reRegex to match a string that consists of only the same number repeated exactly three times separated by single spaces.
+let pattern29 = "42 42 42";
+let Regx29 = /^(\d+) \1 \1$/; 
+console.log(Regx29.test(pattern29));
+
+//Remove Whitespace from Start and End : Sometimes whitespace characters around strings are not wanted but are there. Typical processing of strings is to remove the whitespace at the start and end of it.
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$/g; 
+let result1 = hello.replace(wsRegex, "") 
+console.log(result1)
+
+// 🎉🎉 CONGRATULATIONS 🎉🎉 
+// YOU HAVE COMPLETED THE 90% OF INTERMIDIATE-ADVANCE JS WITH INTERVIEWS PERPERATIONS NOTE THAT STILL MANY TOPICS ARE STILL NOT AVAILABLE HERE I WILL PUSH THEM SHORTLY.
+// NOW WHAT ? NOW LET'S LEARN  CONCEPTS THAT MAKES YOU BETTER THAN 90% OF THE PROGRAMMERS
+// LET'S START WITH DEBUGGING :
+
+// DEBUGGING 
+import DEBUG from "./Debug.js";
+// Learning debugging requires a seperate console to make that please un-commit the line below
+DEBUG()
