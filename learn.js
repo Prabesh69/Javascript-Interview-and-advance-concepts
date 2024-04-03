@@ -2,8 +2,8 @@ console.log("hello world")
 
 // Hoisting - Variable and function are automatically declared at the top of the code 
 // Example :
-console.log(a)
-var a = 7; // undefined (Note : it do not says not declared rather says undefined both are different)
+console.log(a) // undefined (Note : it do not says not declared rather says undefined both are different undefined = "a" is decalred but not defined , it is defined in line 6)
+var a = 7; 
 
 
 // Primitives and reference
