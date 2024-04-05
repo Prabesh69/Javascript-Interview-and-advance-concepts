@@ -5,20 +5,21 @@ console.log("hello world")
 console.log(a) // undefined (Note : it do not says not declared rather says undefined both are different undefined = "a" is decalred but not defined , it is defined in line 6)
 var a = 7; 
 
+// Note : Only variables and functions are hoisted , not assingment and assingment functions i.e "var" and "function" are hoisted but "let , const" and assinged function are not hois
 
 // Primitives and reference
 
 // primitives = null,string,bollean,undefined (it can be copied directly)
 var b = 7;
 let c = b;
-console.log(c) // 7 
+console.log(c) // 7 (directly copied)
 
 // refrences = {},[],()  (it can't be copied directly)
 let d = [1,2,3,4]
 let obj = {name:"Prabesh"}
 let e = d;
 e.pop(); // remove a digit form last place of a array
-console.log(d); // 1,2,3 (it is beacuse the value in e is not it's own [1,2,3,4] but the value i.e [1,2,3,4]  of d so any changes in both d and e will result in change in both variables hence not copied directly)
+console.log(d); // 1,2,3 (it is beacuse the value in e is not it's own [1,2,3,4] but the value i.e [1,2,3,4]  of d so any changes in both d and e will result in change in both, hence not copied directly)
 let obj1 = obj;
 obj1.name = "Sam";
 console.log(obj.name); // sam (obj is changed even tho we never chnaged it directly that might create a problem)
@@ -43,7 +44,7 @@ console.log(obj2.name); // prabesh (line 24's problem is fixed )
 //push
 let arr = [1,2,3,4,5,6]
 arr.push(7) //add in the end of the arry [1,2,3,4,5,6,7]
-console.log(arr)
+console.log(arr)  
 // pop
 arr.pop() // remove  a digit from last place of arry [1,2,3,4,5,6]
 console.log(arr)
@@ -60,7 +61,7 @@ console.log(arr)
 // window (There are many features that are provided by a browser and js acceses them with the window i.e when js has to interact with browser elements it uses window )
 
 console.log(window) //these are all the elements of window
-// note var adds itself to window but not let and const (major differnce between them) so above line will also show a and b ;
+// note var adds itself to window but not let and const (major differnce between them) so above line will also show a and b , that we asinged in line 6 and 12;
 // we don't use var because it exposes itself to window;
 
 // Heap memory(Heap is a location where the created variables or data in a program are stored)
@@ -321,7 +322,11 @@ import problemSolving from "./Problemsolving.js";
 problemSolving()
 
 // Regexes :  In JavaScript, a regex (short for regular expression) is a powerful tool used for pattern matching within strings. It allows you to perform complex search and manipulation operations on text data. Regular expressions consist of a pattern defined by a sequence of characters that represent the search criteria.
+
+// NOTE : Since Regex is complex , you don't need to learn it these days . Regex can be done using chatgpt , but it is recommended to know when to use it and what can be achieved with Regex 
+
 // Regexes methods in js 
+
 
 // 1. Pattern matching : Check if a string matches a specific pattern 
 const pattern = "Hello, World";
@@ -517,5 +522,7 @@ console.log(result1)
 
 // DEBUGGING 
 import DEBUG from "./Debug.js";
-// Learning debugging requires a seperate console to make that please un-commit the line below
-DEBUG()
+
+
+// Learning debugging requires a seperate console ,so to make that please un-commit the line below
+// DEBUG()
