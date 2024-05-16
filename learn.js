@@ -404,7 +404,7 @@ const  Regx13_1 = /r[a-z]*?n/gi
 console.log(pattern13.match(Regx13),pattern13.match(Regx13_1)); // go is shortest instance
 
 //14.Match Beginning String Pattern : you used the caret character (^) inside a character set to create a negated character set in the form [^thingsThatWillNotBeMatched]. Outside of a character set, the caret is used to search for patterns at the beginning of strings.
-const pattern14 = "Prabesh is a front end react developer with DSA knowledge"
+const pattern14 = "Prabesh is a front end react developer"
 const Regx14 = /^prabesh/i
 console.log(Regx14.test(pattern14)) // string in the middle/last wont return true only first string 
 
@@ -526,3 +526,4 @@ import DEBUG from "./Debug.js";
 
 // Learning debugging requires a seperate console ,so to make that please un-commit the line below
 // DEBUG()
+// If you want to leave some message or want to connect : prabeshkhanal2004@gmail.com
